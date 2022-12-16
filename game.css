@@ -1,10 +1,11 @@
-body{
-    background-image: url("/backgroundMobile.jpg");
+body {
+    background-image: url("/backgroundImages/mobile.jpg");
     background-repeat: no-repeat;
-    background-size: 100vw 100vh;
+    background-size: 100vw 85vh;
 }
-img{
-    position:relative;
+
+img {
+    position: relative;
     width: 50px;
     height: 50px;
     pointer-events: none;
@@ -13,34 +14,35 @@ img{
 
 @media screen and (min-width: 1100px) {
     body {
-        background: url("/backgroundDesktop.jpg");
+        background: url("/backgroundImages/desktop.jpg");
         background-repeat: no-repeat;
         background-size: 100vw 100vh;
     }
-    img{
-        position:relative;
-        width: 100px;
-        height: 100px;
+
+    img {
+        position: relative;
+        width: 70px;
+        height: 70px;
         pointer-events: none;
         user-select: none;
     }
 }
- 
+
 .scoreDiv {
     pointer-events: none;
     user-select: none;
 }
 
-td{
+td {
     width: 50px;
     height: 50px;
 }
 
-table{
+table {
     position: absolute;
 }
 
-.bottomText{
+.bottomText {
     width: 100%;
     color: #012c3a;
     position: fixed;
@@ -48,10 +50,27 @@ table{
     font-size: 1.5rem;
     text-align: center;
     font-weight: bolder;
+    opacity: 60%;
 }
 
 .gameOverDisplay {
     width: 100%;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     text-align: right;
+}
+
+body {
+    overflow: hidden;
+}
+
+.gameOverButton {
+    background-color: #426c7c;
+    border: none;
+    color: white;
+    margin-top: 10px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 25px;
 }

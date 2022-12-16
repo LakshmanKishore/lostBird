@@ -5,7 +5,7 @@ const tds = document.querySelectorAll("td");
 const table = document.querySelector("table");
 const scoreDiv = document.querySelector(".scoreDiv");
 const score = document.querySelector(".score");
-const gameOverSign = document.querySelector(".gameOverSign");
+const gameOverButton = document.querySelector(".gameOverButton");
 const gameOverDisplay = document.querySelector(".gameOverDisplay");
 
 let tableTds = [[], [], [], [], []];
@@ -13,10 +13,10 @@ let inc = 0;
 let points = 0;
 
 let birdsHTML = [
-    `<img src="up.png" alt="Up Direction Bird"/>`,
-    `<img src="right.png" alt="Right Direction Bird"/>`,
-    `<img src="down.png" alt="Down Direction Bird"/>`,
-    `<img src="left.png" alt="Left Direction Bird"/>`
+    `<img src="/birdImages/up.png" alt="Up Direction Bird"/>`,
+    `<img src="/birdImages/right.png" alt="Right Direction Bird"/>`,
+    `<img src="/birdImages/down.png" alt="Down Direction Bird"/>`,
+    `<img src="/birdImages/left.png" alt="Left Direction Bird"/>`
 ]
 let mainBirdDirection;
 let gameOver = false;
@@ -66,7 +66,7 @@ function spawnBirds() {
     const randomNumber = Math.round(Math.random() * (spawnCoordinates.length - 1));
     const randomDistractionNumber = Math.round(Math.random() * (birdsHTML.length - 1));
     const randomMainNumber = Math.round(Math.random() * (birdsHTML.length - 1));
-    const coordinates = spawnCoordinates[16]
+    const coordinates = spawnCoordinates[randomNumber]
     for (let i = 0; i < coordinates.length; i++) {
         tableTds[coordinates[i][0]][coordinates[i][1]].innerHTML = birdsHTML[randomDistractionNumber];
     }
@@ -88,21 +88,21 @@ function handleSwipe(swipe){
         spawnBirds();
     } else {
         gameOver = true;
-        for (let i = 0; i < trs.length; i++) {
-            for (let j = 0; j < trs.length; j++) {
-                tableTds[i][j].innerHTML = "";
-            }
-        }
+        table.innerHTML = "";
 
         gameOverDisplay.style.display = "flex";
         gameOverDisplay.style.flexDirection = "column";
         gameOverDisplay.style.justifyContent = "center";
         gameOverDisplay.style.alignItems = "center";
-        gameOverDisplay.style.height = "97vh";
+        gameOverDisplay.style.height = "85vh";
         gameOverDisplay.style.fontWeight = "bolder";
-        gameOverSign.hidden = false;
+        gameOverButton.hidden = false;
     }
 }
+
+gameOverButton.addEventListener("click", function(){
+    window.location.reload();
+})
 
 document.addEventListener('touchstart', handleTouchStart, false);
 document.addEventListener('touchmove', handleTouchMove, false);
